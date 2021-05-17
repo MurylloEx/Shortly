@@ -1,0 +1,77 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 0538800d1e9ce107059b5d1964ef2207393eecddf3015d53dcce85d342dbdbd7
+
+name:           shortly
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/shortly#readme>
+homepage:       https://github.com/githubuser/shortly#readme
+bug-reports:    https://github.com/githubuser/shortly/issues
+author:         Muryllo Pimenta de Oliveira
+maintainer:     muryllo.pimenta@upe.br
+copyright:      2021 Author name here
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/shortly
+
+library
+  exposed-modules:
+      TokenService
+  other-modules:
+      Paths_shortly
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5,
+      random
+  default-language: Haskell2010
+
+executable shortly-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_shortly
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , binary
+    , ghc-prim
+    , mysql
+    , mysql-simple
+    , random
+    , resource-pool
+    , scotty
+    , shortly
+    , text
+  default-language: Haskell2010
+
+test-suite shortly-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      TokenSpec
+      Paths_shortly
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , hspec
+    , shortly
+    , text
+    , random
+  default-language: Haskell2010
